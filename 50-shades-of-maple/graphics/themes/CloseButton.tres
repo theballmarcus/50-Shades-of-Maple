@@ -2,14 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://c8brtsokosd3r" path="res://graphics/images/CloseButton.png" id="1_ay4d6"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8nd4x"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ay4d6"]
 texture = ExtResource("1_ay4d6")
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5oaor"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4tx1v"]
 texture = ExtResource("1_ay4d6")
 
 [resource]
@@ -34,6 +34,6 @@ Button/font_sizes/font_size = 16
 Button/fonts/font = null
 Button/styles/disabled = null
 Button/styles/focus = null
-Button/styles/hover = SubResource("StyleBoxTexture_8nd4x")
-Button/styles/normal = SubResource("StyleBoxTexture_5oaor")
+Button/styles/hover = SubResource("StyleBoxTexture_ay4d6")
+Button/styles/normal = SubResource("StyleBoxTexture_4tx1v")
 Button/styles/pressed = null

@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://tk8urxvp2h1k"]
+
+[ext_resource type="FontFile" uid="uid://cxkql38cwaxi2" path="res://graphics/font/vcr_osd_mono/VCR_OSD_MONO_1.001.ttf" id="1_05k5p"]
+
+[resource]
+default_base_scale = 1.0
+default_font = ExtResource("1_05k5p")
