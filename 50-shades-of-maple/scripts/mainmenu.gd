@@ -23,6 +23,7 @@ func _draw():
 func _on_settings_button_pressed() -> void:
 	SettingsMenu.visible=true
 	BlurOverlay.visible=true
+	
 
 func _on_close_settings_button_pressed() -> void:
 	SettingsMenu.visible=false
