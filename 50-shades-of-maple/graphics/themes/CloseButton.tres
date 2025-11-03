@@ -1,17 +1,16 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://dwse32igttkax"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://b72vss7i0olh8"]
 
-[ext_resource type="Texture2D" uid="uid://crpw0snownkue" path="res://graphics/images/SettingsIconHover.png" id="1_usots"]
-[ext_resource type="Texture2D" uid="uid://cedlw6otmwu3k" path="res://graphics/images/SettingsIcon.png" id="2_x2t40"]
+[ext_resource type="Texture2D" uid="uid://c8brtsokosd3r" path="res://graphics/images/CloseButton.png" id="1_ay4d6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8nd4x"]
-texture = ExtResource("1_usots")
+texture = ExtResource("1_ay4d6")
 expand_margin_left = 2.0
 expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5oaor"]
-texture = ExtResource("2_x2t40")
+texture = ExtResource("1_ay4d6")
 
 [resource]
 Button/colors/font_color = Color(0, 0, 0, 1)

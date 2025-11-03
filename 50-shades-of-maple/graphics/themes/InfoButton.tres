@@ -1,17 +1,17 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://dwse32igttkax"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://bxj6d3oq306wd"]
 
-[ext_resource type="Texture2D" uid="uid://crpw0snownkue" path="res://graphics/images/SettingsIconHover.png" id="1_usots"]
-[ext_resource type="Texture2D" uid="uid://cedlw6otmwu3k" path="res://graphics/images/SettingsIcon.png" id="2_x2t40"]
+[ext_resource type="Texture2D" uid="uid://c48lscaj868qn" path="res://graphics/images/InfoIconHover.png" id="1_h0yjj"]
+[ext_resource type="Texture2D" uid="uid://dng6hxtd76bub" path="res://graphics/images/InfoIcon.png" id="2_cqtcy"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8nd4x"]
-texture = ExtResource("1_usots")
+texture = ExtResource("1_h0yjj")
 expand_margin_left = 2.0
 expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5oaor"]
-texture = ExtResource("2_x2t40")
+texture = ExtResource("2_cqtcy")
 
 [resource]
 Button/colors/font_color = Color(0, 0, 0, 1)
