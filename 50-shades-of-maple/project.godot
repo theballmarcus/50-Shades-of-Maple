@@ -12,14 +12,20 @@ config_version=5
 
 config/name="50 Shades of Maple"
 run/main_scene="uid://jcbkvk8nqwho"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Sound="*res://scripts/sounds.gd"
+Gamestate="*res://scripts/gamestate.gd"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/size/resizable=false
+window/stretch/mode="viewport"
 
 [gui]
 
