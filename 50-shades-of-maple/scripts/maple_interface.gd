@@ -55,7 +55,7 @@ func _on_submit_pressed():
 
 	# Send the HTTP request
 	var headers = ["Content-Type: application/json", "x-api-key: crazyVildAPIKEYIDevelopment!"]
-	var response = http_request.request(API_URL, headers, HTTPClient.METHOD_POST, json_data)
+	var response = http_request.request(API_URL, headers, HTTPClient.METHOD_POST,  	)
 
 func _on_request_completed(result, response_code, headers, body):
 	print("Response code:", response_code)

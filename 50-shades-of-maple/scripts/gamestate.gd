@@ -19,4 +19,9 @@ var chapters = {
 }
 const API_URL = "http://139.59.130.153:3000"  
 const API_KEY = "x-api-key: crazyVildAPIKEYIDevelopment!"
-var JWT_TOKEN = ""
+var JWT = ""
+var headers = ["Content-Type: application/json", Gamestate.API_KEY]
+
+# User data
+var username = ""
+var user_id = ""
