@@ -255,7 +255,7 @@ offset_right = 295.0
 offset_bottom = 60.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_c3mrm")
 
-[node name="Type your password" type="LineEdit" parent="LoginWindow/Username"]
+[node name="Type your username" type="LineEdit" parent="LoginWindow/Username"]
 layout_mode = 0
 offset_left = 47.5
 offset_top = 32.0
@@ -519,6 +519,8 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_jeoms")
 theme_override_styles/hover = SubResource("StyleBoxFlat_oyds7")
 theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_s7dft")
 text = "LOGIN"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
 
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="InfoButton" to="." method="_on_info_button_pressed"]
