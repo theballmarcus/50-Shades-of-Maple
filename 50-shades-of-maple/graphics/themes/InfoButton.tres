@@ -1,7 +1,10 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://bxj6d3oq306wd"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://bxj6d3oq306wd"]
 
 [ext_resource type="Texture2D" uid="uid://c48lscaj868qn" path="res://graphics/images/InfoIconHover.png" id="1_h0yjj"]
 [ext_resource type="Texture2D" uid="uid://dng6hxtd76bub" path="res://graphics/images/InfoIcon.png" id="2_cqtcy"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h0yjj"]
+texture = ExtResource("2_cqtcy")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8nd4x"]
 texture = ExtResource("1_h0yjj")
@@ -34,7 +37,7 @@ Button/constants/outline_size = 0
 Button/font_sizes/font_size = 16
 Button/fonts/font = null
 Button/styles/disabled = null
-Button/styles/focus = null
+Button/styles/focus = SubResource("StyleBoxTexture_h0yjj")
 Button/styles/hover = SubResource("StyleBoxTexture_8nd4x")
 Button/styles/normal = SubResource("StyleBoxTexture_5oaor")
 Button/styles/pressed = null

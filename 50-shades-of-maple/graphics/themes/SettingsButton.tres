@@ -1,7 +1,10 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://dwse32igttkax"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://dwse32igttkax"]
 
 [ext_resource type="Texture2D" uid="uid://crpw0snownkue" path="res://graphics/images/SettingsIconHover.png" id="1_usots"]
 [ext_resource type="Texture2D" uid="uid://cedlw6otmwu3k" path="res://graphics/images/SettingsIcon.png" id="2_x2t40"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_usots"]
+texture = ExtResource("2_x2t40")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8nd4x"]
 texture = ExtResource("1_usots")
@@ -34,7 +37,7 @@ Button/constants/outline_size = 0
 Button/font_sizes/font_size = 16
 Button/fonts/font = null
 Button/styles/disabled = null
-Button/styles/focus = null
+Button/styles/focus = SubResource("StyleBoxTexture_usots")
 Button/styles/hover = SubResource("StyleBoxTexture_8nd4x")
 Button/styles/normal = SubResource("StyleBoxTexture_5oaor")
 Button/styles/pressed = null
