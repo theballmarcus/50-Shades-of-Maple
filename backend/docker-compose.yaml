@@ -42,7 +42,7 @@ services:
     ports:  
       - "3000:3000"
     volumes:
-      - /opt/maple:/srv/maple:ro
+      - /opt/maple:/opt/maple:ro
 
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://localhost:3000/health"]
