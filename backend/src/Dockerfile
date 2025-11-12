@@ -5,12 +5,13 @@ RUN mkdir -p /app
 WORKDIR /app
 
 COPY . /app
-# RUN npm ci --omit=dev
+# RUN npm ci --omit=dev 
+WORKDIR /app/src
 
-
- 
+RUN npm install
 
 ENV NODE_ENV=production \
     PORT=3000
+
 EXPOSE 3000
-CMD ["node", "src/server.js"]
+CMD ["node", "server.js"]
