@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://jcbkvk8nqwho"]
+[gd_scene load_steps=18 format=3 uid="uid://jcbkvk8nqwho"]
 
 [ext_resource type="Script" uid="uid://c7jbk13alqqef" path="res://scripts/loginpage.gd" id="1_dqy8u"]
 [ext_resource type="Theme" uid="uid://b72vss7i0olh8" path="res://graphics/themes/CloseButton.tres" id="2_1q5ya"]
@@ -6,8 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://bjlbnm7lhb2re" path="res://graphics/images/UsernameIcon.png" id="4_jeoms"]
 [ext_resource type="Texture2D" uid="uid://be0r86sc8ykao" path="res://graphics/images/PasswordIcon.png" id="5_oyds7"]
 
+[sub_resource type="FontVariation" id="FontVariation_oyds7"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c3mrm"]
-bg_color = Color(0.47058824, 0.50980395, 0.54901963, 1)
+bg_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -20,7 +22,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="FontVariation" id="FontVariation_s7dft"]
+[sub_resource type="FontVariation" id="FontVariation_jeoms"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ucbwn"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -50,6 +52,10 @@ expand_margin_right = 1.0
 expand_margin_bottom = 1.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s7dft"]
+
+[sub_resource type="FontVariation" id="FontVariation_ucbwn"]
+
+[sub_resource type="FontVariation" id="FontVariation_s7dft"]
 
 [node name="LoginPage" type="Control"]
 layout_mode = 3
@@ -181,12 +187,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -306.0
-offset_top = -235.0
-offset_right = 306.0
-offset_bottom = -203.0
+offset_left = -305.0
+offset_top = -213.0
+offset_right = 307.0
+offset_bottom = -181.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = SubResource("FontVariation_oyds7")
 theme_override_font_sizes/font_size = 36
 text = "Welcome to 50 Shades of Maple"
 horizontal_alignment = 1
@@ -195,7 +202,7 @@ vertical_alignment = 1
 [node name="Underline" type="Panel" parent="50-Shades-of-Maple"]
 layout_mode = 0
 offset_top = 50.0
-offset_right = 612.0
+offset_right = 691.5
 offset_bottom = 57.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_c3mrm")
 
@@ -228,7 +235,7 @@ offset_bottom = -169.75244
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
-theme_override_fonts/font = SubResource("FontVariation_s7dft")
+theme_override_fonts/font = SubResource("FontVariation_jeoms")
 theme_override_font_sizes/font_size = 32
 text = "LOGIN"
 
@@ -259,7 +266,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_c3mrm")
 layout_mode = 0
 offset_left = 47.5
 offset_top = 32.0
-offset_right = 229.5
+offset_right = 255.5
 offset_bottom = 55.0
 theme_override_colors/font_color = Color(0.47058824, 0.50980395, 0.54901963, 1)
 theme_override_colors/font_placeholder_color = Color(0.47058824, 0.50980395, 0.54901963, 0.6)
@@ -295,7 +302,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_c3mrm")
 layout_mode = 0
 offset_left = 47.5
 offset_top = 32.0
-offset_right = 229.5
+offset_right = 261.5
 offset_bottom = 55.0
 theme_override_colors/font_color = Color(0.47058824, 0.50980395, 0.54901963, 1)
 theme_override_colors/font_uneditable_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
@@ -328,7 +335,7 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_jeoms")
 theme_override_styles/hover = SubResource("StyleBoxFlat_oyds7")
 theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_s7dft")
-text = "LOGIN"
+text = "Login"
 
 [node name="SignUp" type="Label" parent="LoginWindow"]
 layout_mode = 1
@@ -344,9 +351,9 @@ offset_bottom = 126.2475
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
-theme_override_fonts/font = SubResource("FontVariation_s7dft")
+theme_override_fonts/font = SubResource("FontVariation_ucbwn")
 theme_override_font_sizes/font_size = 20
-text = "OR SIGN UP"
+text = "Or Sign Up"
 
 [node name="GoToSignUp" type="Button" parent="LoginWindow/SignUp"]
 z_index = 5
@@ -356,17 +363,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -63.0
-offset_top = 8.500002
-offset_right = 94.0
-offset_bottom = 36.5
+offset_left = -62.0
+offset_top = 17.5
+offset_right = 95.0
+offset_bottom = 45.5
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.8, 0.8)
 theme_override_styles/normal = SubResource("StyleBoxFlat_jeoms")
 theme_override_styles/hover = SubResource("StyleBoxFlat_oyds7")
 theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_s7dft")
-text = "SIGN UP"
+text = "Sign Up"
 
 [node name="SignUpWindow" type="Panel" parent="."]
 visible = false

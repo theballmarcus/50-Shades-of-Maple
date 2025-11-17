@@ -68,3 +68,4 @@ func _on_request_complete(result,response_code,headers,body):
 		get_tree().change_scene_to_file("res://instances/mainmenu.tscn")
 	else:
 		print("ERROR")
+		# lav grafik for det her 

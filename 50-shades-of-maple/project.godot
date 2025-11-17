@@ -30,3 +30,4 @@ window/stretch/mode="viewport"
 [gui]
 
 theme/custom="uid://tk8urxvp2h1k"
+theme/custom_font="uid://tk8urxvp2h1k"
