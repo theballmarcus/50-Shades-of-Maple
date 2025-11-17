@@ -10,11 +10,25 @@ extends Control
 @onready var UsernameLogin = $"LoginWindow/Username/Type your username"
 @onready var PasswordLogin = $"LoginWindow/Password/Type your password"
 
+var user_data = {}
+var config
+
 func _ready():
 	queue_redraw()
 	InfoMenu.visible=false
 	BlurOverlay.visible=false
 	Requests.request_completed.connect(_on_request_complete)
+	
+	config = ConfigFile.new()
+	var err = config.load("user://user_data.cfg")
+
+	if err != OK:
+		return
+	# If token exists, try to validate it for auto-login flow
+	var token = config.get_value("UserInfo", "JWT")
+	if token != null:
+		Gamestate.JWT = token
+		Requests.request(Gamestate.API_URL + "/token/validate", Gamestate.headers + ["Authorization: Bearer " + token], HTTPClient.METHOD_GET)
 
 #Buttons
 func _on_info_button_pressed() -> void:
@@ -33,9 +47,8 @@ func _on_close_button_pressed() -> void:
 
 func _on_login_button_pressed() -> void:
 	Sound.play_sound("ButtonClicked")
-	var headers = ["Content-Type: application/json", Gamestate.API_KEY]
 	var data = {"username":UsernameLogin.text,"password":PasswordLogin.text}
-	Requests.request(Gamestate.API_URL + "/login",headers,HTTPClient.METHOD_POST,JSON.stringify(data))
+	Requests.request(Gamestate.API_URL + "/login", Gamestate.headers, HTTPClient.METHOD_POST, JSON.stringify(data))
 	
 
 func _on_back_to_login_button_pressed() -> void:
@@ -55,17 +68,49 @@ func _on_create_account_button_pressed() -> void:
 	Sound.play_sound("ButtonClicked")
 	SignUpWindow.visible=false
 	LoginWindow.visible=true
-	var headers = ["Content-Type: application/json", Gamestate.API_KEY]
 	var data = {"username":Username.text,"password":Password.text}
-	Requests.request(Gamestate.API_URL + "/users",headers,HTTPClient.METHOD_POST,JSON.stringify(data))
+	Requests.request(Gamestate.API_URL + "/users", Gamestate.headers, HTTPClient.METHOD_POST, JSON.stringify(data))
 
 func _on_request_complete(result,response_code,headers,body):
-	var json = JSON.parse_string(body.get_string_from_utf8())
+	if result != OK:
+		print("Request failed!")
+		return
+	
+	var body_text = body.get_string_from_utf8()
+	
+	if response_code != 200:
+		print("Response code:", response_code)
+		print(body_text)
+		return
+
+	var json = JSON.parse_string(body_text)
 	print(json)
-	print(response_code)
+	
+	if json == null:
+		return
+	
 	if json.has("token"):
-		Gamestate.JWT_TOKEN = json["token"]
+		save_user_data(json)
 		get_tree().change_scene_to_file("res://instances/mainmenu.tscn")
+		
+	elif json.has("valid"):
+		if json["valid"] == true:
+			save_user_data(json)
+			get_tree().change_scene_to_file("res://instances/mainmenu.tscn")
+
 	else:
 		print("ERROR")
-		# lav grafik for det her 
+func save_user_data(json):
+	if json.has("token"):
+		Gamestate.JWT = json["token"]
+		config.set_value("UserInfo","JWT", json["token"])
+		
+	if json.has("user"):
+		if json["user"].has("name"):
+			Gamestate.username = json["user"]["name"]
+			config.set_value("UserInfo","username",  json["user"]["name"])
+		if json["user"].has("id"):
+			Gamestate.user_id =  json["user"]["id"]
+			config.set_value("UserInfo","user_id",   json["user"]["id"])
+			
+	config.save("user://user_data.cfg")
