@@ -5,7 +5,9 @@
 [ext_resource type="Theme" uid="uid://dwse32igttkax" path="res://graphics/themes/SettingsButton.tres" id="2_7xgxv"]
 [ext_resource type="Theme" uid="uid://bxj6d3oq306wd" path="res://graphics/themes/InfoButton.tres" id="3_nfl07"]
 
-[node name="Background" type="Node"]
+[node name="Background" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_7xgxv")
 
 [node name="Background" type="Node2D" parent="."]
@@ -22,24 +24,11 @@ z_index = -1
 offset_top = 60.0
 offset_right = 1280.0
 offset_bottom = 720.0
+mouse_filter = 1
 color = Color(0.9411765, 0.9411765, 0.9411765, 1)
 
-[node name="RightBackground" type="ColorRect" parent="Background"]
-visible = false
-z_index = 2
-offset_left = 1210.0
-offset_right = 1280.0
-offset_bottom = 720.0
-color = Color(0.07450981, 0.34117648, 0.5882353, 1)
-
-[node name="LeftBackground" type="ColorRect" parent="Background"]
-visible = false
-z_index = 2
-offset_right = 70.0
-offset_bottom = 720.0
-color = Color(0.07450981, 0.34117648, 0.5882353, 1)
-
 [node name="CloseButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 1223.0
 offset_top = 2.0
 offset_right = 1278.0
@@ -47,6 +36,7 @@ offset_bottom = 57.0
 theme = ExtResource("1_ushb7")
 
 [node name="SettingsButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 1152.0
 offset_top = 5.0
 offset_right = 1202.0
@@ -56,14 +46,14 @@ theme = ExtResource("2_7xgxv")
 [node name="SettingsMenu" type="Panel" parent="."]
 visible = false
 self_modulate = Color(1, 1, 1, 0)
-z_index = 10
+layout_mode = 0
 offset_left = -14.0
 offset_top = 6.0
 offset_right = 19.0
 offset_bottom = 35.0
 
 [node name="CloseSettingsButton" type="Button" parent="SettingsMenu"]
-z_index = 5
+z_index = 1
 layout_mode = 0
 offset_left = 1169.0
 offset_top = 76.0
@@ -120,6 +110,7 @@ theme_override_colors/font_color = Color(0.470588, 0.509804, 0.54902, 1)
 text = "SETTINGS"
 
 [node name="InfoButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 1072.0
 offset_top = -4.0
 offset_right = 1139.0
@@ -130,7 +121,7 @@ expand_icon = true
 [node name="InfoMenu" type="Panel" parent="."]
 visible = false
 self_modulate = Color(1, 1, 1, 0)
-z_index = 10
+layout_mode = 0
 offset_left = -91.0
 offset_right = -51.0
 offset_bottom = 40.0
@@ -194,17 +185,20 @@ text = "INFO"
 
 [node name="BlurOverlay" type="ColorRect" parent="."]
 visible = false
+z_index = -1
+layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 720.0
-mouse_filter = 2
+mouse_filter = 1
 color = Color(0, 0, 0, 0.392157)
 
 [node name="BlueOverlay" type="ColorRect" parent="."]
 z_index = -1
+layout_mode = 0
 offset_top = 60.0
 offset_right = 1280.0
 offset_bottom = 720.0
-mouse_filter = 2
+mouse_filter = 1
 color = Color(0.11372549, 0.38039216, 0.627451, 0.29411766)
 
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

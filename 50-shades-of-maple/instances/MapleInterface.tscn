@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cvpupoy7ohwr3"]
 
-[ext_resource type="Script" uid="uid://cjngiiav6j4u6" path="res://scripts/maple_interface.gd" id="1_fkl5s"]
+[ext_resource type="Script" uid="uid://bqa74chr725xb" path="res://scripts/maple_interface.gd" id="1_fkl5s"]
 
 [node name="MapleInterface" type="Control"]
 layout_mode = 3
@@ -10,8 +10,10 @@ script = ExtResource("1_fkl5s")
 [node name="Display" type="RichTextLabel" parent="."]
 z_index = 5
 layout_mode = 0
-offset_right = 1277.0
-offset_bottom = 536.0
+offset_left = 668.0
+offset_top = 96.0
+offset_right = 1174.0
+offset_bottom = 447.0
 bbcode_enabled = true
 
 [node name="Cursor" type="ColorRect" parent="Display"]
@@ -22,26 +24,36 @@ offset_bottom = 40.0
 [node name="UserInput" type="TextEdit" parent="."]
 z_index = 1
 layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 533.0
+offset_left = 669.0
+offset_top = 97.0
+offset_right = 1189.0
+offset_bottom = 582.0
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 954.0
-offset_top = 372.0
-offset_right = 1275.0
-offset_bottom = 527.0
+offset_left = 957.0
+offset_top = 510.0
+offset_right = 1187.0
+offset_bottom = 578.0
 text = "Submit"
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 accept_gzip = false
 
-[node name="Output" type="Label" parent="."]
+[node name="AnswerBox" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 10.0
-offset_top = 543.0
-offset_right = 1274.0
-offset_bottom = 706.0
+offset_left = 668.0
+offset_top = 584.0
+offset_right = 1188.0
+offset_bottom = 665.0
+color = Color(0.42961916, 7.70092e-07, 3.6098064e-07, 1)
+
+[node name="Output" type="Label" parent="AnswerBox"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = -1.0
+offset_right = 513.0
+offset_bottom = 87.0
 text = "Output"
 horizontal_alignment = 1
 vertical_alignment = 1

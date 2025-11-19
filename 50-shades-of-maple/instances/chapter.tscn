@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cr8ot0c2sy4va"]
+
+[ext_resource type="PackedScene" uid="uid://uypsiv1yjyky" path="res://instances/background.tscn" id="1_kb7ea"]
+[ext_resource type="Script" uid="uid://brwxq23g77nky" path="res://scripts/chapter.gd" id="1_n2igu"]
+[ext_resource type="PackedScene" uid="uid://cvpupoy7ohwr3" path="res://instances/MapleInterface.tscn" id="3_e32bu"]
+
+[node name="Chapter" type="Node2D"]
+script = ExtResource("1_n2igu")
+
+[node name="Background" parent="." instance=ExtResource("1_kb7ea")]
+
+[node name="ChapterText" type="RichTextLabel" parent="."]
+offset_left = 39.0
+offset_top = 107.0
+offset_right = 627.0
+offset_bottom = 678.0
+bbcode_enabled = true
+text = "Text bliver udfyldt her automatisk"
+
+[node name="MapleInterface" parent="." instance=ExtResource("3_e32bu")]
+z_index = 3

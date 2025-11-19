@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsbp2y56h21pc"]
+
+[ext_resource type="Script" uid="uid://cij6u3stvf3ek" path="res://scripts/enter_chapter_button.gd" id="1_nq8k3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_byryv"]
+
+[node name="ChapterButton" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_nq8k3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -22.0
+offset_right = 75.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.45920157, 0.37292, 0.19271365, 1)
+
+[node name="ChapterNumber" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_top = 5.0
+offset_right = 150.0
+offset_bottom = 26.0
+text = "Enter"
+horizontal_alignment = 1
+
+[node name="ChapterName" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_top = 22.0
+offset_right = 150.0
+offset_bottom = 43.0
+theme_override_colors/font_color = Color(0.49354547, 0.49354553, 0.49354553, 1)
+text = "Basics"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = -76.0
+offset_top = -21.0
+offset_right = 75.0
+offset_bottom = 21.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_byryv")

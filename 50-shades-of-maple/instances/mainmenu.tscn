@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dftke1ho287gx"]
+[gd_scene load_steps=4 format=3 uid="uid://dftke1ho287gx"]
 
 [ext_resource type="Script" uid="uid://by8mo2v64k3ua" path="res://scripts/mainmenu.gd" id="1_f6vy5"]
 [ext_resource type="PackedScene" uid="uid://uypsiv1yjyky" path="res://instances/background.tscn" id="2_by1kd"]
-[ext_resource type="Theme" uid="uid://b72vss7i0olh8" path="res://graphics/themes/CloseButton.tres" id="4_k227a"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k227a"]
 bg_color = Color(1, 1, 1, 1)
@@ -21,148 +20,16 @@ grow_vertical = 2
 script = ExtResource("1_f6vy5")
 
 [node name="Background" parent="." instance=ExtResource("2_by1kd")]
-
-[node name="SettingsMenu" type="Panel" parent="."]
-visible = false
-self_modulate = Color(1, 1, 1, 0)
-z_index = 5
 layout_mode = 0
-offset_left = -14.0
-offset_top = 6.0
-offset_right = 19.0
-offset_bottom = 35.0
 
-[node name="CloseSettingsButton" type="Button" parent="SettingsMenu"]
-z_index = 5
-layout_mode = 0
-offset_left = 1169.0
-offset_top = 76.0
-offset_right = 1214.0
-offset_bottom = 121.0
-theme = ExtResource("4_k227a")
-
-[node name="Top" type="ColorRect" parent="SettingsMenu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 883.5
-offset_top = 61.5
-offset_right = 1198.5
-offset_bottom = 106.5
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.113725, 0.380392, 0.627451, 1)
-
-[node name="Bottom" type="ColorRect" parent="SettingsMenu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 883.5
-offset_top = 106.5
-offset_right = 1198.5
-offset_bottom = 518.5
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="SettingsLabel" type="Label" parent="SettingsMenu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 966.5
-offset_top = 68.5
-offset_right = 1041.5
-offset_bottom = 83.5
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(2, 2)
-theme_override_colors/font_color = Color(0.470588, 0.509804, 0.54902, 1)
-text = "SETTINGS"
-
-[node name="InfoMenu" type="Panel" parent="."]
-visible = false
-self_modulate = Color(1, 1, 1, 0)
-z_index = 5
-layout_mode = 0
-offset_left = -91.0
-offset_right = -51.0
-offset_bottom = 40.0
-
-[node name="CloseInfoButton" type="Button" parent="InfoMenu"]
-z_index = 5
-layout_mode = 0
-offset_left = 1174.0
-offset_top = 82.0
-offset_right = 1219.0
-offset_bottom = 127.0
-theme = ExtResource("4_k227a")
-
-[node name="Top" type="ColorRect" parent="InfoMenu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 883.5
-offset_top = 61.5
-offset_right = 1198.5
-offset_bottom = 106.5
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.113725, 0.380392, 0.627451, 1)
-
-[node name="Bottom" type="ColorRect" parent="InfoMenu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 883.5
-offset_top = 106.5
-offset_right = 1198.5
-offset_bottom = 518.5
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="InfoLabel" type="Label" parent="InfoMenu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 1007.0
-offset_top = 69.0
-offset_right = 1047.0
-offset_bottom = 84.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(2, 2)
-theme_override_colors/font_color = Color(0.470588, 0.509804, 0.54902, 1)
-text = "INFO"
-
-[node name="BlueOverlay" type="ColorRect" parent="."]
-z_index = 1
-layout_mode = 0
-offset_top = 60.0
-offset_right = 1280.0
-offset_bottom = 720.0
-mouse_filter = 2
-color = Color(0.11372549, 0.38039216, 0.627451, 0.29411766)
+[node name="ChapterContainer" type="Control" parent="."]
+z_index = 6
+anchors_preset = 0
+offset_left = 127.0
+offset_top = 247.0
+offset_right = 1155.0
+offset_bottom = 599.0
+mouse_filter = 1
 
 [node name="50-Shades-of-Maple" type="Label" parent="."]
 z_index = 2
@@ -173,13 +40,13 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -306.0
-offset_top = -235.0
+offset_top = -242.0
 offset_right = 306.0
-offset_bottom = -203.0
+offset_bottom = -196.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 36
-text = "How to use Maple?"
+text = "50 Shades of Maple!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -189,6 +56,3 @@ offset_top = 50.0
 offset_right = 612.0
 offset_bottom = 57.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_k227a")
-
-[connection signal="pressed" from="SettingsMenu/CloseSettingsButton" to="." method="_on_close_settings_button_pressed"]
-[connection signal="pressed" from="InfoMenu/CloseInfoButton" to="." method="_on_close_info_button_pressed"]

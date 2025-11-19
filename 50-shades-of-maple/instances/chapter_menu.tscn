@@ -1,9 +1,54 @@
-[gd_scene load_steps=3 format=3 uid="uid://5y0jk4r35gpc"]
+[gd_scene load_steps=4 format=3 uid="uid://5y0jk4r35gpc"]
 
 [ext_resource type="Script" uid="uid://cieke7ohjdby8" path="res://scripts/chapter_menu.gd" id="1_ofw6q"]
 [ext_resource type="PackedScene" uid="uid://uypsiv1yjyky" path="res://instances/background.tscn" id="2_uxliu"]
 
-[node name="ChapterMenu" type="Node2D"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uxliu"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="ChapterMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_ofw6q")
 
 [node name="Background" parent="." instance=ExtResource("2_uxliu")]
+layout_mode = 0
+
+[node name="ChapterContainer" type="Control" parent="."]
+z_index = 6
+anchors_preset = 0
+offset_left = 127.0
+offset_top = 247.0
+offset_right = 1155.0
+offset_bottom = 599.0
+mouse_filter = 1
+
+[node name="50-Shades-of-Maple" type="Label" parent="."]
+z_index = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 337.0
+offset_top = 47.0
+offset_right = 949.0
+offset_bottom = 191.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Underline" type="Panel" parent="50-Shades-of-Maple"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 101.0
+offset_right = 618.0
+offset_bottom = 108.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uxliu")

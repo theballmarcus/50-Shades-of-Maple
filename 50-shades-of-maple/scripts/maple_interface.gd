@@ -4,8 +4,9 @@ extends Control
 @onready var display = $Display
 @onready var button = $Button
 @onready var http_request = $HTTPRequest
-@onready var output_box = $Output
+@onready var output_box = $AnswerBox/Output
 @onready var cursor = $Display/Cursor
+@onready var answerbox = $AnswerBox
 
 const API_URL = "http://139.59.130.153:3000/maple/eval"  
 var font 
@@ -55,7 +56,7 @@ func _on_submit_pressed():
 
 	# Send the HTTP request
 	var headers = ["Content-Type: application/json", "x-api-key: crazyVildAPIKEYIDevelopment!"]
-	var response = http_request.request(API_URL, headers, HTTPClient.METHOD_POST,  	)
+	var response = http_request.request(API_URL, headers, HTTPClient.METHOD_POST, json_data)
 
 func _on_request_completed(result, response_code, headers, body):
 	print("Response code:", response_code)
@@ -67,8 +68,19 @@ func _on_request_completed(result, response_code, headers, body):
 	var data = JSON.new()
 	var response_json = data.parse(response_text)
 	if response_json == OK:
+		if not "stdout" in data.data.keys():
+			print("No stdout from server")
+			print(data.data)
+			return
 		print("API Response:", data.data)
 		output_box.text = data.data['stdout']
+		if Gamestate.menuChapter != null and Gamestate.curChapter != null:
+			if data.data['stdout'] in Gamestate.chapters[Gamestate.menuChapter][Gamestate.curChapter]['correct_answers']:
+				print("solved")
+				answerbox.color = Color(0,0.43,0)
+			else:
+				answerbox.color = Color(0.43,0,0)
+
 	else:
 		print("Recieved invalid JSON from API")
 
@@ -76,6 +88,8 @@ func _on_request_completed(result, response_code, headers, body):
 func parse_math(input: String) -> String:
 	var output = ""
 	var i = 0
+	if input == "" and curText != "":
+		input = "[ERROR]: Empty response from server"
 	while i < input.length():
 		var char = input[i]
 		if char == "^" and i+1 < input.length():
