@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://5y0jk4r35gpc"]
+
+[ext_resource type="Script" uid="uid://cieke7ohjdby8" path="res://scripts/chapter_menu.gd" id="1_ofw6q"]
+[ext_resource type="PackedScene" uid="uid://uypsiv1yjyky" path="res://instances/background.tscn" id="2_uxliu"]
+
+[node name="ChapterMenu" type="Node2D"]
+script = ExtResource("1_ofw6q")
+
+[node name="Background" parent="." instance=ExtResource("2_uxliu")]

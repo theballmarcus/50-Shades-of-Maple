@@ -1,7 +1,5 @@
 extends Control
 
-@onready var InfoMenu = $InfoMenu
-@onready var BlurOverlay = $BlurOverlay
 @onready var SignUpWindow = $SignUpWindow
 @onready var LoginWindow = $LoginWindow
 @onready var Requests = $HTTPRequest
@@ -15,8 +13,7 @@ var config
 
 func _ready():
 	queue_redraw()
-	InfoMenu.visible=false
-	BlurOverlay.visible=false
+
 	Requests.request_completed.connect(_on_request_complete)
 	
 	config = ConfigFile.new()
@@ -29,21 +26,6 @@ func _ready():
 	if token != null:
 		Gamestate.JWT = token
 		Requests.request(Gamestate.API_URL + "/token/validate", Gamestate.headers + ["Authorization: Bearer " + token], HTTPClient.METHOD_GET)
-
-#Buttons
-func _on_info_button_pressed() -> void:
-	InfoMenu.visible=not InfoMenu.visible
-	BlurOverlay.visible=true
-	Sound.play_sound("ButtonClicked")
-
-func _on_close_info_button_pressed() -> void:
-	InfoMenu.visible=false
-	BlurOverlay.visible=false
-	Sound.play_sound("ButtonClicked")
-
-func _on_close_button_pressed() -> void:
-	Sound.play_sound("ButtonClicked")
-	get_tree().quit()
 
 func _on_login_button_pressed() -> void:
 	Sound.play_sound("ButtonClicked")
