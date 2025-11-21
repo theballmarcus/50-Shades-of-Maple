@@ -56,7 +56,7 @@ export async function createUser({ username, password = null }) {
         [username, hashed]
     );
     return { 
-        id: Number(result.insertId), 
+        id: parseInt(result.insertId), 
         username 
     };
 }
@@ -66,7 +66,7 @@ export async function getUserByUsername(username) {
     if (!rows || rows.length === 0) return null;
     const r = rows[0];
     return { 
-        id: Number(r.id), 
+        id: parseInt(r.id), 
         name: r.name, 
         password: r.password,
         created_at: r.created_at 
@@ -80,7 +80,7 @@ export async function verifyCredentials(username, password) {
     if (!ok) return null;
     // Don't expose password
     return { 
-        id: Number(user.id), 
+        id: parseInt(user.id), 
         name: user.name 
     };
 }
@@ -90,7 +90,7 @@ export async function getUser(id) {
     if (!rows || rows.length === 0) return null;
     const r = rows[0];
     return { 
-        id: Number(r.id), 
+        id: parseInt(r.id), 
         name: r.name, 
         created_at: r.created_at 
     };
@@ -103,8 +103,8 @@ export async function saveChapterState({ user_id, chapter_id, content, completed
         ON DUPLICATE KEY UPDATE completed = VALUES(completed), content = VALUES(content)`;
     await pool.query(sql, [user_id, chapter_id, completed ? 1 : 0, content]);
     return { 
-        user_id: Number(user_id), 
-        chapter_id: Number(chapter_id), 
+        user_id: parseInt(user_id), 
+        chapter_id: parseInt(chapter_id), 
         completed: Boolean(completed), 
         content 
     };
@@ -118,8 +118,8 @@ export async function getChapterState({ user_id, chapter_id }) {
     if (!rows || rows.length === 0) return null;
     const r = rows[0];
     return { 
-        user_id: Number(r.user_id), 
-        chapter_id: Number(r.chapter_id), 
+        user_id: parseInt(r.user_id), 
+        chapter_id: parseInt(r.chapter_id), 
         completed: !!r.completed, 
         content: r.content 
     };
@@ -131,8 +131,8 @@ export async function getUserChapters({ user_id }) {
         [user_id]
     );
     return rows.map(r => ({
-        user_id: Number(r.user_id),
-        chapter_id: Number(r.chapter_id),
+        user_id: parseInt(r.user_id),
+        chapter_id: parseInt(r.chapter_id),
         completed: !!r.completed,
         content: r.content
     }));
