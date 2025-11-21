@@ -8,7 +8,6 @@ extends Control
 @onready var cursor = $Display/Cursor
 @onready var answerbox = $AnswerBox
 
-const API_URL = "http://139.59.130.153:3000/maple/eval"  
 var font 
 var curText
 var displayText
@@ -56,7 +55,7 @@ func _on_submit_pressed():
 
 	# Send the HTTP request
 	var headers = ["Content-Type: application/json", "x-api-key: crazyVildAPIKEYIDevelopment!"]
-	var response = http_request.request(API_URL, headers, HTTPClient.METHOD_POST, json_data)
+	var response = http_request.request(Gamestate.API_URL + "/maple/eval", headers, HTTPClient.METHOD_POST, json_data)
 
 func _on_request_completed(result, response_code, headers, body):
 	print("Response code:", response_code)
@@ -68,6 +67,10 @@ func _on_request_completed(result, response_code, headers, body):
 	var data = JSON.new()
 	var response_json = data.parse(response_text)
 	if response_json == OK:
+		if "chapter_id" in data.data.keys():
+			print(data.data)
+			return
+		
 		if not "stdout" in data.data.keys():
 			print("No stdout from server")
 			print(data.data)
@@ -75,8 +78,23 @@ func _on_request_completed(result, response_code, headers, body):
 		print("API Response:", data.data)
 		output_box.text = data.data['stdout']
 		if Gamestate.menuChapter != null and Gamestate.curChapter != null:
-			if data.data['stdout'] in Gamestate.chapters[Gamestate.menuChapter][Gamestate.curChapter]['correct_answers']:
+			var curChapter = Gamestate.chapters[Gamestate.menuChapter][Gamestate.curChapter]
+			if data.data['stdout'] in curChapter['correct_answers']:
 				print("solved")
+				# Submit solution to server
+				var send_data = {
+					"chapter_id" : curChapter["id"],
+					"content" : input_box.text.strip_edges(),
+					"completed" : true
+				}
+				var send_headers = [
+					"Authorization: Bearer %s" % Gamestate.JWT,
+					"Content-Type: application/json",
+					"x-api-key: crazyVildAPIKEYIDevelopment!"
+				]
+				
+				var response = http_request.request(Gamestate.API_URL + "/chapter_states", send_headers, HTTPClient.METHOD_POST, JSON.stringify(send_data))
+				
 				answerbox.color = Color(0,0.43,0)
 			else:
 				answerbox.color = Color(0.43,0,0)

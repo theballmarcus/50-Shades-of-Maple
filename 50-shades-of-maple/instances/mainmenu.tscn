@@ -56,3 +56,5 @@ offset_top = 50.0
 offset_right = 612.0
 offset_bottom = 57.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_k227a")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
