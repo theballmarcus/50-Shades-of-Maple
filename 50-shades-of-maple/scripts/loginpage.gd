@@ -73,12 +73,12 @@ func _on_request_complete(result,response_code,headers,body):
 	
 	if json.has("token"):
 		save_user_data(json)
-		get_tree().change_scene_to_file("res://instances/mainmenu.tscn")
+		Gamestate.change_scene("res://instances/mainmenu.tscn")
 		
 	elif json.has("valid"):
 		if json["valid"] == true:
 			save_user_data(json)
-			get_tree().change_scene_to_file("res://instances/mainmenu.tscn")
+			Gamestate.change_scene("res://instances/mainmenu.tscn")
 
 	else:
 		print("ERROR")

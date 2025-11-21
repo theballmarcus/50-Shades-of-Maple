@@ -201,8 +201,19 @@ offset_bottom = 720.0
 mouse_filter = 1
 color = Color(0.11372549, 0.38039216, 0.627451, 0.29411766)
 
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 997.0
+offset_top = -2.0
+offset_right = 1076.0
+offset_bottom = 65.0
+theme = ExtResource("3_nfl07")
+text = "go back"
+expand_icon = true
+
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="SettingsMenu/CloseSettingsButton" to="." method="_on_close_settings_button_pressed"]
 [connection signal="pressed" from="InfoButton" to="." method="_on_info_button_pressed"]
 [connection signal="pressed" from="InfoMenu/CloseInfoButton" to="." method="_on_close_info_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

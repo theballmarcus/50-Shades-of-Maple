@@ -66,6 +66,7 @@ grow_vertical = 2
 script = ExtResource("1_dqy8u")
 
 [node name="Background" parent="." instance=ExtResource("2_eodm7")]
+layout_mode = 0
 
 [node name="50-Shades-of-Maple" type="Label" parent="."]
 layout_mode = 1

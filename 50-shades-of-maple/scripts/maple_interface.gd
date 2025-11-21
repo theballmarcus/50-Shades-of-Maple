@@ -7,11 +7,11 @@ extends Control
 @onready var output_box = $AnswerBox/Output
 @onready var cursor = $Display/Cursor
 @onready var answerbox = $AnswerBox
+@onready var continueButton = $AnswerBox/ContinueButton
 
 var font 
 var curText
 var displayText
-
 
 func _ready():
 	font = display.get_theme_font('normal_font')
@@ -27,6 +27,21 @@ func _ready():
 	
 	cursor.color = Color(1,1,1)
 	cursor.size = Vector2(2, font.get_height())
+	
+	continueButton.disabled = true
+	
+	if Gamestate.userChapterStates == {}:
+		return
+		
+	if not Gamestate.userChapterStates.has("chapters"):
+		return
+	
+	for recievedChapter in Gamestate.userChapterStates["chapters"]:
+		if Gamestate.get_current_chapter()["id"] == recievedChapter["chapter_id"]:
+			input_box.text = recievedChapter["content"]
+			_on_text_changed()
+			if recievedChapter["completed"] == true:
+				level_solved()
 
 func _process(delta: float) -> void:
 	var line = input_box.get_caret_line()
@@ -34,6 +49,10 @@ func _process(delta: float) -> void:
 	
 	if curText != null:
 		cursor.position = Vector2(font.get_string_size(displayText.substr(0,column)).x, (font.get_string_size(displayText).y) * (line))
+
+func level_solved():
+	continueButton.disabled = false
+	answerbox.color = Color(0,0.43,0)
 
 func _on_text_changed():
 	curText = input_box.text
@@ -68,7 +87,6 @@ func _on_request_completed(result, response_code, headers, body):
 	var response_json = data.parse(response_text)
 	if response_json == OK:
 		if "chapter_id" in data.data.keys():
-			print(data.data)
 			return
 		
 		if not "stdout" in data.data.keys():
@@ -80,6 +98,7 @@ func _on_request_completed(result, response_code, headers, body):
 		if Gamestate.menuChapter != null and Gamestate.curChapter != null:
 			var curChapter = Gamestate.chapters[Gamestate.menuChapter][Gamestate.curChapter]
 			if data.data['stdout'] in curChapter['correct_answers']:
+				level_solved()
 				print("solved")
 				# Submit solution to server
 				var send_data = {
@@ -95,7 +114,6 @@ func _on_request_completed(result, response_code, headers, body):
 				
 				var response = http_request.request(Gamestate.API_URL + "/chapter_states", send_headers, HTTPClient.METHOD_POST, JSON.stringify(send_data))
 				
-				answerbox.color = Color(0,0.43,0)
 			else:
 				answerbox.color = Color(0.43,0,0)
 
@@ -188,3 +206,6 @@ var subscript_map = {
 	"u": "ᵤ", "v": "ᵥ", "x": "ₓ",
 	"+": "₊", "-": "₋", "=": "₌", "(": "₍", ")": "₎", " ": " "
 }
+
+func _on_continue_button_pressed() -> void:
+	Gamestate.change_scene("res://instances/chapter_menu.tscn") # Replace with function body.

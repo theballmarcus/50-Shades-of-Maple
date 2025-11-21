@@ -18,4 +18,4 @@ func update_text():
 
 func _on_button_pressed():
 	Gamestate.curChapter = chapter_name.text
-	get_tree().change_scene_to_file("res://instances/chapter.tscn")
+	Gamestate.change_scene("res://instances/chapter.tscn")

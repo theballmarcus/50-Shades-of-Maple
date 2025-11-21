@@ -52,8 +52,18 @@ color = Color(0.42961916, 7.70092e-07, 3.6098064e-07, 1)
 layout_mode = 0
 offset_left = 13.0
 offset_top = -1.0
-offset_right = 513.0
-offset_bottom = 87.0
+offset_right = 421.0
+offset_bottom = 81.0
 text = "Output"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ContinueButton" type="Button" parent="AnswerBox"]
+layout_mode = 0
+offset_left = 441.0
+offset_right = 519.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 54
+text = ">"
+
+[connection signal="pressed" from="AnswerBox/ContinueButton" to="." method="_on_continue_button_pressed"]

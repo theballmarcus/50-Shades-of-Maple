@@ -58,3 +58,13 @@ offset_bottom = 57.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_k227a")
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1130.0
+offset_top = 75.0
+offset_right = 1250.0
+offset_bottom = 111.0
+text = "Log out"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

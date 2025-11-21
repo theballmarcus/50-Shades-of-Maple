@@ -44,6 +44,24 @@ var headers = ["Content-Type: application/json", Gamestate.API_KEY]
 var username = ""
 var user_id = ""
 
-var userChapterStates = {
-	
-}
+var userChapterStates = {}
+
+var last_scene = []
+var scene_index = 0
+# functions
+func change_scene(scene):
+	last_scene.append(get_tree().current_scene.scene_file_path)
+	scene_index = last_scene.size()
+	get_tree().change_scene_to_file(scene)
+
+
+func go_back():
+	scene_index = scene_index - 1
+	get_tree().change_scene_to_file(last_scene[scene_index])
+
+func clear_scene_history():
+	last_scene = []
+	scene_index = 0
+
+func get_current_chapter():
+	return chapters[menuChapter][curChapter]
