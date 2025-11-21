@@ -10,6 +10,7 @@ import {
     verifyCredentials,
     saveChapterState,
     getChapterState,
+    getUserChapters,
     truncateChapterStates,
     truncateUsers
 } from './db.js';
@@ -278,6 +279,32 @@ app.get('/chapter_states/:chapter_id', requireAuth, async (req, res) => {
         });
         res.json({
             state
+        });
+    } catch (err) {
+        console.error('Get chapter state error:', err);
+        res.status(500).json({
+            error: 'Server error'
+        });
+    }
+});
+
+// Get chapter state for logged-in user
+app.get('/chapter_states', requireAuth, async (req, res) => {
+    try {
+        const userId = Number(req.user && req.user.id);
+
+        if (!Number.isInteger(userId) || userId < 1) return res.status(401).json({
+            error: 'Invalid user'
+        });
+
+        const chapters = await getUserChapters({
+            user_id: userId
+        });
+        if (!chapters) return res.status(404).json({
+            error: 'Not found'
+        });
+        res.json({
+            chapters
         });
     } catch (err) {
         console.error('Get chapter state error:', err);

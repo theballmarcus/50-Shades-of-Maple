@@ -95,3 +95,16 @@ export async function getChapterState({ user_id, chapter_id }) {
     const r = rows[0];
     return { user_id: r.user_id, chapter_id: r.chapter_id, completed: !!r.completed, content: r.content };
 }
+
+export async function getUserChapters({ user_id }) {
+    const [rows] = await pool.query(
+        'SELECT user_id, chapter_id, completed, content FROM chapter_states WHERE user_id = ?',
+        [user_id]
+    );
+    return rows.map(r => ({
+        user_id: r.user_id,
+        chapter_id: r.chapter_id,
+        completed: !!r.completed,
+        content: r.content
+    }));
+}
