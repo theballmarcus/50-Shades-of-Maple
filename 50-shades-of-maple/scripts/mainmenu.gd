@@ -76,11 +76,3 @@ func _on_request_completed(result, response_code, headers, body):
 		return
 	
 	create_buttons()
-
-
-func _on_button_pressed() -> void:
-	Gamestate.JWT = "" # Replace with function body.
-	config.erase_section("UserInfo")
-	config.save("user://user_data.cfg")
-	Gamestate.change_scene("res://instances/loginpage.tscn")
-	Gamestate.clear_scene_history()

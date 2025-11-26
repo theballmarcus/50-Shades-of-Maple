@@ -3,7 +3,7 @@ extends Node2D
 @onready var chapterText = $ChapterText
 
 var header_text = ["[font_size=20][b]", "[/b][/font_size]"]
-var code_text = ["[bgcolor=#444444][color=#804d00]", "[/color][/bgcolor]"]
+var code_text = ["[bgcolor=#96A0AAfd][color=#3175B4]", "[/color][/bgcolor]"]
 
 var input=Gamestate.chapters[Gamestate.menuChapter][Gamestate.curChapter].text
 
