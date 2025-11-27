@@ -100,6 +100,7 @@ func _on_request_completed(result, response_code, headers, body):
 			if data.data['stdout'] in curChapter['correct_answers']:
 				level_solved()
 				print("solved")
+				print(Gamestate.userChapterStates)
 				# Submit solution to server
 				var send_data = {
 					"chapter_id" : curChapter["id"],
@@ -111,6 +112,8 @@ func _on_request_completed(result, response_code, headers, body):
 					"Content-Type: application/json",
 					"x-api-key: crazyVildAPIKEYIDevelopment!"
 				]
+				if Gamestate.userChapterStates['chapters'].size() > 0:
+					Gamestate.userChapterStates['chapters'].append(send_data)
 				
 				var response = http_request.request(Gamestate.API_URL + "/chapter_states", send_headers, HTTPClient.METHOD_POST, JSON.stringify(send_data))
 				
